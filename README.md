@@ -1,6 +1,6 @@
-## React Native Paper Phone Input Component
+# React Native Paper Phone Input Component
 
-# PhoneInput Component
+## PhoneInput Component
 
 A customizable and modern phone input field for React Native, built on top of **[react-native-paper](https://github.com/callstack/react-native-paper)** components. It includes an inline country picker, phone number formatting (via **libphonenumber-js**), and a flexible API for easy integration.
 
@@ -100,7 +100,7 @@ export default function MyScreen() {
 | **`withCountryPicker`** | `boolean`                              | `true`                | Whether to show the country picker field.                                                                           |
 | **`withCountryPickerChevron`** | `boolean`                              | `true`                | Whether to show the chevron icon in the country picker field.                                                                           |
 | **`withSelectedCountryCode`** | `boolean`                              | `false`                | Whether to show the selected country code in the country picker field.                                                                           |
-| **`countryPickerStyle`**| `StyleProp<ViewStyle>`                 | `undefined`           | Style object applied to the country picker TextField.                                                               |
+| **`countryPickerStyle`**| `StyleProp<TextStyle>`                 | `undefined`           | Style object applied to the country picker TextField.                                                               |
 | **`containerStyle`**    | `StyleProp<ViewStyle>`                 | `undefined`           | Style object applied to the root container.                                                                         |
 
 ## Functions & Methods
