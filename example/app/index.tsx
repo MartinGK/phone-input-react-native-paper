@@ -1,5 +1,6 @@
 import { PaperProvider } from 'react-native-paper';
-import { PhoneInput } from 'phone-input-react-native-paper';
+// import { PhoneInput } from 'phone-input-react-native-paper';
+import PhoneInput from './src/PhoneInput';
 import { View } from 'react-native';
 
 export default function App() {

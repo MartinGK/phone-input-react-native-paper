@@ -14,7 +14,7 @@ A customizable and modern phone input field for React Native, built on top of **
 
 ## Preview
 
-*(Add screenshots or GIFs here if available.)*
+![PhoneInput Preview](./public/preview.gif)
 
 ## Installation
 
@@ -99,6 +99,7 @@ export default function MyScreen() {
 | **`withLabels`**        | `boolean`                              | `true`                | Whether to show labels above the input fields.                                                                      |
 | **`withCountryPicker`** | `boolean`                              | `true`                | Whether to show the country picker field.                                                                           |
 | **`withCountryPickerChevron`** | `boolean`                              | `true`                | Whether to show the chevron icon in the country picker field.                                                                           |
+| **`withSelectedCountryCode`** | `boolean`                              | `false`                | Whether to show the selected country code in the country picker field.                                                                           |
 | **`countryPickerStyle`**| `StyleProp<ViewStyle>`                 | `undefined`           | Style object applied to the country picker TextField.                                                               |
 | **`containerStyle`**    | `StyleProp<ViewStyle>`                 | `undefined`           | Style object applied to the root container.                                                                         |
 
@@ -107,18 +108,6 @@ export default function MyScreen() {
 - **Phone Number Formatting**: Leveraging **`AsYouType`** from **libphonenumber-js** to format the entered number based on the selected country’s dial code.  
 - **`onSelect`**: Internal callback when a country is selected, updating local state.  
 - **`handleChangeText`**: Internal handler to format the phone number and call `onChangePhone`.
-
-## Customizing the Country Picker
-
-To replace the included `CountryPicker` with your own:
-
-```tsx
-<PhoneInput
-  ...
-  withCountryPicker={false} // Hide the built-in picker
-/>
-{/* Your own custom picker here */}
-```
 
 ## Theming
 

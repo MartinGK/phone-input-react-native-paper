@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { View, StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import { TextInput, useTheme } from 'react-native-paper';
 import CountryPicker, {
@@ -19,8 +19,9 @@ interface PhoneInputProps {
   countryPickerLabel?: string;
   inputPlaceholder?: string;
   withLabels?: boolean;
+  withSelectedCountryCode?: boolean;
   withCountryPicker?: boolean;
-  countryPickerStyle?: StyleProp<ViewStyle>;
+  countryPickerStyle?: StyleProp<TextStyle>;
   containerStyle?: StyleProp<ViewStyle>;
   withCountryPickerChevron?: boolean;
 }
@@ -36,6 +37,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
   withLabels = true,
   withCountryPicker = true,
   withCountryPickerChevron = true,
+  withSelectedCountryCode = false,
   countryPickerStyle,
   containerStyle,
 }) => {
@@ -55,7 +57,6 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
 
   const onSelect = useCallback((country: Country) => {
     setSelectedCountry(country);
-    setVisible(false);
   }, []);
 
   const handleChangeText = (text: string) => {
@@ -78,9 +79,10 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
           <TextInput
             mode="outlined"
             label={withLabels ? countryPickerLabel : undefined}
-            value={`${selectedCountry?.emoji || ''} ${selectedCountry?.code || ''}`}
+            value={`${selectedCountry?.emoji || ''} ${
+              withSelectedCountryCode && selectedCountry?.code || ''}`}
             style={[styles.countryInput, { marginRight: 8 }, countryPickerStyle ]}
-            onFocus={() => setVisible(true)}
+            onPress={() => setVisible(true)}
             right={
               withCountryPickerChevron && (
                 <TextInput.Icon
