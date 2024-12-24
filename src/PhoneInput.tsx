@@ -19,6 +19,10 @@ interface PhoneInputProps {
   countryPickerLabel?: string;
   inputPlaceholder?: string;
   withLabels?: boolean;
+  withCountryPicker?: boolean;
+  countryPickerStyle?: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
+  withCountryPickerChevron?: boolean;
 }
 
 const PhoneInput: React.FC<PhoneInputProps> = ({
@@ -30,6 +34,10 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
   inputStyle,
   onChangePhone,
   withLabels = true,
+  withCountryPicker = true,
+  withCountryPickerChevron = true,
+  countryPickerStyle,
+  containerStyle,
 }) => {
   const theme = useTheme();
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(countries.find(country => country.code === defaultCountry) || null);
@@ -59,26 +67,30 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, containerStyle]}>
       <CountryPicker
         visible={visible}
         onClose={() => setVisible(false)}
         onSelect={onSelect}
       />
       <View style={styles.row}>
-        <TextInput
-          mode="outlined"
-          label={withLabels ? countryPickerLabel : undefined}
-          value={`${selectedCountry?.emoji || ''} ${selectedCountry?.code || ''}`}
-          style={[styles.countryInput, { marginRight: 8 }]}
-          onFocus={() => setVisible(true)}
-          right={
-            <TextInput.Icon
-              icon="chevron-down"
-              onPress={() => setVisible(true)}
-            />
-          }
-        />
+        {withCountryPicker && (
+          <TextInput
+            mode="outlined"
+            label={withLabels ? countryPickerLabel : undefined}
+            value={`${selectedCountry?.emoji || ''} ${selectedCountry?.code || ''}`}
+            style={[styles.countryInput, { marginRight: 8 }, countryPickerStyle ]}
+            onFocus={() => setVisible(true)}
+            right={
+              withCountryPickerChevron && (
+                <TextInput.Icon
+                  icon="chevron-down"
+                  onPress={() => setVisible(true)}
+                />
+              )
+            }
+          />
+        )}
         <TextInput
           mode="outlined"
           label={withLabels ? inputLabel : undefined}
