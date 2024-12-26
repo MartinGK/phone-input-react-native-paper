@@ -4,12 +4,14 @@
   "version": "1.0.3",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "author": "MartinGK <mgainza@bordo.ai>",
+  "author": "MartinGK <mrtgeka@gmail.com>",
   "license": "MIT",
   "keywords": [
     "react-native",
     "react-native-paper",
-    "phone-input"
+    "phone-input",
+    "react-native-phone-input",
+    "react-native-paper-phone-input"
   ],
   "repository": {
     "type": "git",
