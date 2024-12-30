@@ -1,10 +1,9 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import { TextInput, useTheme } from 'react-native-paper';
 import CountryPicker, {
   type Country,
   type CountryCode,
-  type CountryPickerProps,
 } from './CountryPicker';
 
 import { AsYouType, type CountryCode as LibPhoneNumberCountryCode } from 'libphonenumber-js';
@@ -32,14 +31,14 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
   inputPlaceholder = 'Phone number',
   defaultCountry = 'US',
   value = '',
-  inputStyle,
-  onChangePhone,
   withLabels = true,
   withCountryPicker = true,
   withCountryPickerChevron = true,
   withSelectedCountryCode = false,
-  countryPickerStyle,
-  containerStyle,
+  countryPickerStyle = {},
+  containerStyle = {},
+  inputStyle = {},
+  onChangePhone = (_phone: string) => {},
 }) => {
   const theme = useTheme();
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(countries.find(country => country.code === defaultCountry) || null);
